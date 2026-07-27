@@ -167,7 +167,7 @@ export default function Spenden() {
 
               <div className="mt-2 flex flex-col">
                 {bereich.arten.map((art) => (
-                  <label key={art.id} className="flex items-center gap-3 py-1">
+                  <label key={art.id} className="flex min-h-11 items-center gap-3 py-1">
                     <input
                       type="checkbox"
                       value={art.id}
