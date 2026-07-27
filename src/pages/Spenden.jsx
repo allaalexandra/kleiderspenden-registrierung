@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { kleidungsarten } from '../data/kleidungsarten.js'
 import { krisengebiete } from '../data/krisengebiete.js'
+import Feld from '../components/Feld.jsx'
 
 export default function Spenden() {
   const [uebergabeart, setUebergabeart] = useState('')
@@ -45,7 +46,7 @@ export default function Spenden() {
     <>
       <h1 className="text-3xl font-bold text-primaer">Spende registrieren</h1>
 
-      <form className="mt-8" onSubmit={formularAbsenden}>
+      <form className="mt-8" onSubmit={formularAbsenden} noValidate>
         <fieldset>
           <legend className="text-xl font-bold">1. Wie möchten Sie spenden?</legend>
 
@@ -92,28 +93,28 @@ export default function Spenden() {
             </p>
 
             <div className="mt-4 flex flex-col gap-4">
-              <div>
-                <label htmlFor="vorname" className="block font-bold">Vorname</label>
-                <input
-                  type="text"
-                  id="vorname"
-                  name="vorname"
-                  value={adresse.vorname}
-                  onChange={adresseAendern}
-                  className="mt-1 block w-full max-w-md rounded-lg border border-rahmen bg-white px-3 py-2"
-                />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Feld id="vorname" label="Vorname" wert={adresse.vorname} onAendern={adresseAendern} />
+                <Feld id="nachname" label="Nachname" wert={adresse.nachname} onAendern={adresseAendern} />
               </div>
 
-              <div>
-                <label htmlFor="nachname" className="block font-bold">Nachname</label>
-                <input
-                  type="text"
-                  id="nachname"
-                  name="nachname"
-                  value={adresse.nachname}
-                  onChange={adresseAendern}
-                  className="mt-1 block w-full max-w-md rounded-lg border border-rahmen bg-white px-3 py-2"
-                />
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="sm:col-span-2">
+                  <Feld id="strasse" label="Straße" wert={adresse.strasse} onAendern={adresseAendern} />
+                </div>
+                <Feld id="hausnummer" label="Hausnummer" wert={adresse.hausnummer} onAendern={adresseAendern} />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-3">
+                <Feld id="plz" label="Postleitzahl" wert={adresse.plz} onAendern={adresseAendern} />
+                <div className="sm:col-span-2">
+                  <Feld id="ort" label="Ort" wert={adresse.ort} onAendern={adresseAendern} />
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Feld id="telefon" label="Telefon" typ="tel" wert={adresse.telefon} onAendern={adresseAendern} />
+                <Feld id="email" label="E-Mail" typ="email" wert={adresse.email} onAendern={adresseAendern} />
               </div>
             </div>
           </fieldset>
