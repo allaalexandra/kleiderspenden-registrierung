@@ -52,6 +52,8 @@ export default function Spenden() {
     console.log('Registrierung', registrierung)
   }
 
+  const anzahlFehler = Object.keys(fehler).length
+
   return (
     <>
       <h1 className="text-3xl font-bold text-primaer">Spende registrieren</h1>
@@ -188,6 +190,23 @@ export default function Spenden() {
     {fehler.krisengebiet}</p>
             )}
         </fieldset>
+        
+                {anzahlFehler > 0 && (
+          <div
+            role="alert"
+            className="mt-8 rounded-lg border-2 border-red-700 bg-white p-4"
+          >
+            <p className="font-bold text-red-700">
+              Das Formular konnte nicht abgeschickt werden:{' '}
+              {anzahlFehler === 1
+                ? 'eine Angabe ist unvollständig.'
+                : `${anzahlFehler} Angaben sind unvollständig.`}
+            </p>
+            <p className="mt-1 text-sm">
+              Bitte prüfen Sie die rot markierten Felder weiter oben.
+            </p>
+          </div>
+        )}
         
         <button
           type="submit"
