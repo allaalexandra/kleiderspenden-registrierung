@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { kleidungsarten } from '../data/kleidungsarten.js'
 import { krisengebiete } from '../data/krisengebiete.js'
-import { pruefeRegistrierung } from '../logik/validierung.js'
+import { pruefeRegistrierung, pruefePlz } from '../logik/validierung.js'
 import Feld from '../components/Feld.jsx'
 
 export default function Spenden() {
@@ -27,9 +27,23 @@ export default function Spenden() {
     email: '',
   })
 
-  function adresseAendern(ereignis) {
+    function adresseAendern(ereignis) {
     const { name, value } = ereignis.target
     setAdresse({ ...adresse, [name]: value })
+  }
+
+  function plzVerlassen() {
+    const wert = adresse.plz.trim()
+    const meldung = wert === '' ? undefined : pruefePlz(wert)
+    const neueFehler = { ...fehler }
+
+    if (meldung) {
+      neueFehler.plz = meldung
+    } else {
+      delete neueFehler.plz
+    }
+
+    setFehler(neueFehler)
   }
   
   function formularAbsenden(ereignis) {
@@ -122,7 +136,7 @@ export default function Spenden() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-3">
-                <Feld id="plz" label="Postleitzahl" wert={adresse.plz} onAendern={adresseAendern} fehler={fehler.plz} />
+                <Feld id="plz" label="Postleitzahl" wert={adresse.plz} onAendern={adresseAendern} onVerlassen={plzVerlassen} fehler={fehler.plz} />
                 <div className="sm:col-span-2">
                   <Feld id="ort" label="Ort" wert={adresse.ort} onAendern={adresseAendern} fehler={fehler.ort} />
                 </div>
@@ -207,7 +221,7 @@ export default function Spenden() {
             </p>
           </div>
         )}
-        
+
         <button
           type="submit"
           className="mt-8 rounded-lg bg-primaer px-6 py-3 font-bold text-white hover:bg-schrift"

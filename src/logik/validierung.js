@@ -1,5 +1,21 @@
 import { hatGueltigesFormat, istInNaehe, plzPraefix } from './plz.js'
 
+export function pruefePlz(plz) {
+  if (!hatGueltigesFormat(plz)) {
+    return 'Bitte geben Sie die Postleitzahl mit genau fünf Ziffern ein.'
+  }
+
+  if (!istInNaehe(plz)) {
+    return (
+      `Diese Adresse liegt außerhalb unseres Einzugsgebiets (${plzPraefix}xxx). ` +
+      'Das Sammelfahrzeug kann dort nicht abholen – bitte bringen Sie die ' +
+      'Kleidung zu unserer Geschäftsstelle.'
+    )
+  }
+
+  return undefined
+}
+
 export function pruefeRegistrierung(daten) {
   const fehler = {}
 
@@ -30,13 +46,9 @@ export function pruefeRegistrierung(daten) {
     if (adresse.hausnummer.trim() === '') {
       fehler.hausnummer = 'Bitte geben Sie die Hausnummer ein.'
     }
-    if (!hatGueltigesFormat(adresse.plz)) {
-      fehler.plz = 'Bitte geben Sie die Postleitzahl mit genau fünf Ziffern ein.'
-    } else if (!istInNaehe(adresse.plz)) {
-      fehler.plz =
-        `Diese Adresse liegt außerhalb unseres Einzugsgebiets (${plzPraefix}xxx). ` +
-        'Das Sammelfahrzeug kann dort nicht abholen – bitte bringen Sie die ' +
-        'Kleidung zu unserer Geschäftsstelle.'
+    const plzMeldung = pruefePlz(adresse.plz)
+    if (plzMeldung) {
+      fehler.plz = plzMeldung
     }
     if (adresse.ort.trim() === '') {
       fehler.ort = 'Bitte geben Sie den Ort ein.'
