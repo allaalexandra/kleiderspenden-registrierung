@@ -9,10 +9,6 @@ Krisenregion ihre Spende versendet wird.
 > Kontaktdaten und Personen sind frei erfunden. Es werden keine Spenden
 > entgegengenommen und keine Daten an einen Server übertragen.
 
-## Live-Demo
-
-*(wird nach der Veröffentlichung ergänzt)*
-
 ## Umsetzung der Anforderungen
 
 | Nr. | Anforderung | Umgesetzt in |
