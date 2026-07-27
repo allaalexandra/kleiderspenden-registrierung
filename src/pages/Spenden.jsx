@@ -4,6 +4,7 @@ import { kleidungsarten } from '../data/kleidungsarten.js'
 import { krisengebiete } from '../data/krisengebiete.js'
 import { pruefeRegistrierung, pruefePlz } from '../logik/validierung.js'
 import Feld from '../components/Feld.jsx'
+import Seitenkopf from '../components/Seitenkopf.jsx'
 
 export default function Spenden() {
   const [uebergabeart, setUebergabeart] = useState('')
@@ -78,7 +79,10 @@ export default function Spenden() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-primaer">Spende registrieren</h1>
+      <Seitenkopf
+        titel="Spende registrieren"
+        einleitung="Bitte füllen Sie das Formular aus. Welche Angaben nötig sind, hängt davon ab, wie Sie die Kleidung übergeben möchten."
+      />
 
       <form className="mt-8" onSubmit={formularAbsenden} noValidate>
         <fieldset>

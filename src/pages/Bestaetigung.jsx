@@ -2,6 +2,7 @@ import { Link, Navigate } from 'react-router'
 import { bezeichnungFuerArt } from '../data/kleidungsarten.js'
 import { nameFuerGebiet } from '../data/krisengebiete.js'
 import { uebergabeortText } from '../logik/uebergabeort.js'
+import Seitenkopf from '../components/Seitenkopf.jsx'
 
 export default function Bestaetigung() {
   const gespeichert = sessionStorage.getItem('letzteRegistrierung')
@@ -31,7 +32,7 @@ export default function Bestaetigung() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-primaer">Registrierung bestätigt</h1>
+            <Seitenkopf titel="Registrierung bestätigt" />
 
       <div className="mt-6 rounded-lg border-2 border-primaer bg-white p-4">
         <p className="font-bold text-primaer">
