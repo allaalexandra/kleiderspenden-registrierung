@@ -13,12 +13,23 @@ export default function Spenden() {
       setGewaehlteArten([...gewaehlteArten, id])
     }
   }
+  function formularAbsenden(ereignis) {
+    ereignis.preventDefault()
+
+    const registrierung = {
+      uebergabeart,
+      kleidungsarten: gewaehlteArten,
+      krisengebiet,
+    }
+
+    console.log('Registrierung', registrierung)
+  }
 
   return (
     <>
       <h1 className="text-3xl font-bold text-primaer">Spende registrieren</h1>
 
-      <form className="mt-8">
+      <form className="mt-8" onSubmit={formularAbsenden}>
         <fieldset>
           <legend className="text-xl font-bold">1. Wie möchten Sie spenden?</legend>
 
@@ -102,11 +113,12 @@ export default function Spenden() {
           </select>
         </fieldset>
         
-        <p className="mt-6">
-            Übergabeart: <strong>{uebergabeart || 'noch nichts'}</strong><br />
-            Kleidungsarten: <strong>{gewaehlteArten.length}</strong> gewählt<br />
-            Krisengebiet: <strong>{krisengebiet || 'noch nichts'}</strong>
-        </p>
+        <button
+          type="submit"
+          className="mt-8 rounded-lg bg-primaer px-6 py-3 font-bold text-white hover:bg-schrift"
+        >
+          Spende registrieren
+        </button>
       </form>
     </>
   )
