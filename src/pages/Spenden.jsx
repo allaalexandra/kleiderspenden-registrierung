@@ -1,7 +1,17 @@
 import { useState } from 'react'
+import { kleidungsarten } from '../data/kleidungsarten.js'
 
 export default function Spenden() {
   const [uebergabeart, setUebergabeart] = useState('')
+  const [gewaehlteArten, setGewaehlteArten] = useState([])
+
+  function artUmschalten(id) {
+    if (gewaehlteArten.includes(id)) {
+      setGewaehlteArten(gewaehlteArten.filter((eintrag) => eintrag !== id))
+    } else {
+      setGewaehlteArten([...gewaehlteArten, id])
+    }
+  }
 
   return (
     <>
@@ -43,10 +53,36 @@ export default function Spenden() {
             </label>
           </div>
         </fieldset>
+        
+        <fieldset className="mt-8">
+          <legend className="text-xl font-bold">2. Welche Kleidung möchten Sie spenden?</legend>
 
-        <p className="mt-6">
-          Gewählt: <strong>{uebergabeart || 'noch nichts'}</strong>
-        </p>
+          {kleidungsarten.map((bereich) => (
+            <fieldset key={bereich.gruppe} className="mt-4">
+              <legend className="font-bold">{bereich.gruppe}</legend>
+
+              <div className="mt-2 flex flex-col">
+                {bereich.arten.map((art) => (
+                  <label key={art.id} className="flex items-center gap-3 py-1">
+                    <input
+                      type="checkbox"
+                      value={art.id}
+                      checked={gewaehlteArten.includes(art.id)}
+                      onChange={() => artUmschalten(art.id)}
+                      className="h-5 w-5 accent-primaer"
+                    />
+                    {art.bezeichnung}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ))}
+        </fieldset>
+
+          <p className="mt-6">
+          Übergabeart: <strong>{uebergabeart || 'noch nichts'}</strong><br />
+          Kleidungsarten: <strong>{gewaehlteArten.length}</strong> gewählt
+          </p>
       </form>
     </>
   )
