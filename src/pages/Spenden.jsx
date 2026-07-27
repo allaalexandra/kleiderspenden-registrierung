@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { kleidungsarten } from '../data/kleidungsarten.js'
+import { krisengebiete } from '../data/krisengebiete.js'
 
 export default function Spenden() {
   const [uebergabeart, setUebergabeart] = useState('')
   const [gewaehlteArten, setGewaehlteArten] = useState([])
-
+  const [krisengebiet, setKrisengebiet] = useState('')
   function artUmschalten(id) {
     if (gewaehlteArten.includes(id)) {
       setGewaehlteArten(gewaehlteArten.filter((eintrag) => eintrag !== id))
@@ -79,10 +80,33 @@ export default function Spenden() {
           ))}
         </fieldset>
 
-          <p className="mt-6">
-          Übergabeart: <strong>{uebergabeart || 'noch nichts'}</strong><br />
-          Kleidungsarten: <strong>{gewaehlteArten.length}</strong> gewählt
-          </p>
+        <fieldset className="mt-8">
+          <legend className="text-xl font-bold">3. Wohin soll Ihre Spende gehen?</legend>
+
+          <label htmlFor="krisengebiet" className="mt-3 block font-bold">
+            Krisengebiet
+          </label>
+          <select
+            id="krisengebiet"
+            name="krisengebiet"
+            value={krisengebiet}
+            onChange={(ereignis) => setKrisengebiet(ereignis.target.value)}
+            className="mt-1 block w-full max-w-md rounded-lg border border-rahmen bg-white px-3 py-2"
+          >
+            <option value="">Bitte wählen</option>
+            {krisengebiete.map((gebiet) => (
+              <option key={gebiet.id} value={gebiet.id}>
+                {gebiet.name}
+              </option>
+            ))}
+          </select>
+        </fieldset>
+        
+        <p className="mt-6">
+            Übergabeart: <strong>{uebergabeart || 'noch nichts'}</strong><br />
+            Kleidungsarten: <strong>{gewaehlteArten.length}</strong> gewählt<br />
+            Krisengebiet: <strong>{krisengebiet || 'noch nichts'}</strong>
+        </p>
       </form>
     </>
   )
