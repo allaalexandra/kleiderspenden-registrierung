@@ -1,4 +1,4 @@
-export default function Feld({ id, label, wert, onAendern, onVerlassen, fehler, typ = 'text' }) {
+export default function Feld({ id, label, wert, onAendern, onVerlassen, fehler, typ = 'text', maxLaenge = 100 }) {
   return (
     <div>
       <label htmlFor={id} className="block font-bold">{label}</label>
@@ -10,6 +10,7 @@ export default function Feld({ id, label, wert, onAendern, onVerlassen, fehler, 
         value={wert}
         onChange={onAendern}
         onBlur={onVerlassen}
+        maxLength={maxLaenge}
         aria-invalid={fehler ? 'true' : 'false'}
         aria-describedby={fehler ? `${id}-fehler` : undefined}
         className={`mt-1 block w-full rounded-lg border bg-white px-3 py-2.5 ${
