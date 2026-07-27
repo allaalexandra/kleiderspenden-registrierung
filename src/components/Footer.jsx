@@ -1,3 +1,5 @@
+import { Link } from 'react-router'
+
 export default function Footer() {
   return (
     <footer className="border-t border-rahmen bg-flaeche">
@@ -11,8 +13,8 @@ export default function Footer() {
 
         <nav aria-label="Rechtliche Hinweise" className="mt-4">
           <ul className="flex gap-4">
-            <li><a href="/impressum" className="underline hover:text-primaer">Impressum</a></li>
-            <li><a href="/datenschutz" className="underline hover:text-primaer">Datenschutz</a></li>
+            <li><Link to="/impressum" className="underline hover:text-primaer">Impressum</Link></li>
+            <li><Link to="/datenschutz" className="underline hover:text-primaer">Datenschutz</Link></li>
           </ul>
         </nav>
 
