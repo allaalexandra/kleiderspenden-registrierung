@@ -8,4 +8,7 @@ export const geschaeftsstelle = {
   telefon: '07934/4422',
   email: 'kontakt@hoffnungsfaden.de',
   oeffnungszeiten: 'Montag bis Sonntag, 10:00–15:00 Uhr, weitere Termine nach Absprache',
+  vorstand: 'Kisa Karsten und Bruno Bobsik',
+  registergericht: 'Amtsgericht Bad Mergentheim',
+  registernummer: 'VR 442297',
 }
