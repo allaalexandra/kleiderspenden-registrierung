@@ -13,6 +13,22 @@ export default function Spenden() {
       setGewaehlteArten([...gewaehlteArten, id])
     }
   }
+  const [adresse, setAdresse] = useState({
+    vorname: '',
+    nachname: '',
+    strasse: '',
+    hausnummer: '',
+    plz: '',
+    ort: '',
+    telefon: '',
+    email: '',
+  })
+
+  function adresseAendern(ereignis) {
+    const { name, value } = ereignis.target
+    setAdresse({ ...adresse, [name]: value })
+  }
+
   function formularAbsenden(ereignis) {
     ereignis.preventDefault()
 
@@ -65,6 +81,43 @@ export default function Spenden() {
             </label>
           </div>
         </fieldset>
+
+        {uebergabeart === 'abholung' && (
+          <fieldset className="mt-8">
+            <legend className="text-xl font-bold">Ihre Abholadresse</legend>
+
+            <p className="mt-2 max-w-prose text-sm">
+              Diese Angaben brauchen wir, um das Sammelfahrzeug zu planen und Sie
+              bei Rückfragen erreichen zu können.
+            </p>
+
+            <div className="mt-4 flex flex-col gap-4">
+              <div>
+                <label htmlFor="vorname" className="block font-bold">Vorname</label>
+                <input
+                  type="text"
+                  id="vorname"
+                  name="vorname"
+                  value={adresse.vorname}
+                  onChange={adresseAendern}
+                  className="mt-1 block w-full max-w-md rounded-lg border border-rahmen bg-white px-3 py-2"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="nachname" className="block font-bold">Nachname</label>
+                <input
+                  type="text"
+                  id="nachname"
+                  name="nachname"
+                  value={adresse.nachname}
+                  onChange={adresseAendern}
+                  className="mt-1 block w-full max-w-md rounded-lg border border-rahmen bg-white px-3 py-2"
+                />
+              </div>
+            </div>
+          </fieldset>
+        )}
         
         <fieldset className="mt-8">
           <legend className="text-xl font-bold">2. Welche Kleidung möchten Sie spenden?</legend>
