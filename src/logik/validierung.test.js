@@ -103,4 +103,4 @@ describe('pruefePlz', () => {
   it('gibt nichts zurück bei einer gültigen Postleitzahl im Gebiet', () => {
     expect(pruefePlz('97980')).toBeUndefined()
   })
-})
+}) 

@@ -36,3 +36,14 @@ export const kleidungsarten = [
     ],
   },
 ]
+
+export function bezeichnungFuerArt(id) {
+  for (const bereich of kleidungsarten) {
+    const treffer = bereich.arten.find((art) => art.id === id)
+    if (treffer) {
+      return treffer.bezeichnung
+    }
+  }
+
+  return id
+}

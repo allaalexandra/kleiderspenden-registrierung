@@ -6,3 +6,8 @@ export const krisengebiete = [
   { id: 'af-kabul', name: 'Afghanistan – Kabul' },
   { id: 'ye-sanaa', name: 'Jemen – Sanaa' },
 ]
+
+export function nameFuerGebiet(id) {
+  const treffer = krisengebiete.find((gebiet) => gebiet.id === id)
+  return treffer ? treffer.name : id
+}
