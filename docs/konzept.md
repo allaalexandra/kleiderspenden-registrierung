@@ -39,15 +39,15 @@ Der Übergabeort wird beispielsweise aus der gewählten Übergabeart abgeleitet.
 | Übergabeart | Einer der beiden Werte gewählt | Bitte wählen Sie eine Übergabeart aus. | Ja |
 | Kleidungsarten | Mindestens ein Kästchen angehakt | Bitte wählen Sie mindestens eine Kleidungsart aus. | Ja |
 | Krisengebiet | Ein Eintrag aus der Liste gewählt | Bitte wählen Sie ein Krisengebiet aus. | Ja |
-| Vorname | Nicht leer | Bitte geben Sie Ihren Vornamen ein. | Ja |
-| Nachname | Nicht leer | Bitte geben Sie Ihren Nachnamen ein. | Ja |
+| Vorname | Nicht leer | Bitte geben Sie Ihren Vornamen ein. | Nur bei Abholung |
+| Nachname | Nicht leer | Bitte geben Sie Ihren Nachnamen ein. | Nur bei Abholung |
 | Straße | Nicht leer | Bitte geben Sie die Straße ein. | Nur bei Abholung |
 | Hausnummer | Nicht leer | Bitte geben Sie die Hausnummer ein. | Nur bei Abholung |
 | PLZ (Format) | Genau fünf Ziffern | Bitte geben Sie die Postleitzahl mit genau fünf Ziffern ein. | Nur bei Abholung |
 | PLZ (Nähe) | Die ersten beiden Ziffern sind 97 | Diese Adresse liegt außerhalb unseres Einzugsgebiets (97xxx). Das Sammelfahrzeug kann dort nicht abholen – bitte bringen Sie die Kleidung zu unserer Geschäftsstelle. | Nur bei Abholung |
 | Ort | Nicht leer | Bitte geben Sie den Ort ein. | Nur bei Abholung |
-| Telefon | Nicht leer; erlaubt sind Ziffern, +, −, /, Klammern und Leerzeichen | Bitte geben Sie eine gültige Telefonnummer ein. | Ja |
-| E-Mail | Enthält genau ein @-Zeichen mit Text davor und einem Punkt danach | Bitte geben Sie eine gültige E-Mail-Adresse ein. | Ja |
+| Telefon | Nicht leer; erlaubt sind Ziffern, +, −, /, Klammern und Leerzeichen | Bitte geben Sie eine gültige Telefonnummer ein. | Nur bei Abholung |
+| E-Mail | Enthält genau ein @-Zeichen mit Text davor und einem Punkt danach | Bitte geben Sie eine gültige E-Mail-Adresse ein. | Nur bei Abholung |
 
 ## Seitenstruktur
 | Seite | Adresse | Zweck |

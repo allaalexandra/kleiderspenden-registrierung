@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { kleidungsarten } from '../data/kleidungsarten.js'
 import { krisengebiete } from '../data/krisengebiete.js'
+import { pruefeRegistrierung } from '../logik/validierung.js'
 import Feld from '../components/Feld.jsx'
 
 export default function Spenden() {
@@ -29,7 +30,7 @@ export default function Spenden() {
     const { name, value } = ereignis.target
     setAdresse({ ...adresse, [name]: value })
   }
-
+  
   function formularAbsenden(ereignis) {
     ereignis.preventDefault()
 
@@ -37,6 +38,14 @@ export default function Spenden() {
       uebergabeart,
       kleidungsarten: gewaehlteArten,
       krisengebiet,
+      adresse,
+    }
+
+    const gefundeneFehler = pruefeRegistrierung(registrierung)
+
+    if (Object.keys(gefundeneFehler).length > 0) {
+      console.log('Fehler', gefundeneFehler)
+      return
     }
 
     console.log('Registrierung', registrierung)
