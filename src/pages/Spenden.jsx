@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { kleidungsarten } from '../data/kleidungsarten.js'
 import { krisengebiete } from '../data/krisengebiete.js'
 import { pruefeRegistrierung, pruefePlz } from '../logik/validierung.js'
@@ -9,6 +10,7 @@ export default function Spenden() {
   const [gewaehlteArten, setGewaehlteArten] = useState([])
   const [krisengebiet, setKrisengebiet] = useState('')
   const [fehler, setFehler] = useState({})
+  const navigate = useNavigate()
   function artUmschalten(id) {
     if (gewaehlteArten.includes(id)) {
       setGewaehlteArten(gewaehlteArten.filter((eintrag) => eintrag !== id))
@@ -63,7 +65,13 @@ export default function Spenden() {
       return
     }
 
-    console.log('Registrierung', registrierung)
+        const abgeschlossen = {
+      ...registrierung,
+      registriertAm: new Date().toISOString(),
+    }
+
+    sessionStorage.setItem('letzteRegistrierung', JSON.stringify(abgeschlossen))
+    navigate('/bestaetigung')
   }
 
   const anzahlFehler = Object.keys(fehler).length
