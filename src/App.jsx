@@ -12,9 +12,17 @@ import NichtGefunden from './pages/NichtGefunden.jsx'
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-hintergrund text-schrift">
+
+            <a
+        href="#hauptinhalt"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded-lg focus:bg-primaer focus:px-4 focus:py-2 focus:font-bold focus:text-white"
+      >
+        Zum Hauptinhalt springen
+      </a>
+
       <Header />
 
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+      <main id="hauptinhalt" tabIndex={-1} className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
         <Routes>
           <Route path="/" element={<Startseite />} />
           <Route path="/spenden" element={<Spenden />} />
@@ -30,4 +38,3 @@ export default function App() {
     </div>
   )
 }
-

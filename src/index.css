@@ -8,3 +8,10 @@
   --color-schrift: #18372b;
   --color-rahmen: #5c7d6c;
 }
+
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-primaer);
+    outline-offset: 2px;
+  }
+}
