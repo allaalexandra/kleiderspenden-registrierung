@@ -8,6 +8,7 @@ export default function Spenden() {
   const [uebergabeart, setUebergabeart] = useState('')
   const [gewaehlteArten, setGewaehlteArten] = useState([])
   const [krisengebiet, setKrisengebiet] = useState('')
+  const [fehler, setFehler] = useState({})
   function artUmschalten(id) {
     if (gewaehlteArten.includes(id)) {
       setGewaehlteArten(gewaehlteArten.filter((eintrag) => eintrag !== id))
@@ -42,9 +43,9 @@ export default function Spenden() {
     }
 
     const gefundeneFehler = pruefeRegistrierung(registrierung)
+    setFehler(gefundeneFehler)
 
     if (Object.keys(gefundeneFehler).length > 0) {
-      console.log('Fehler', gefundeneFehler)
       return
     }
 
@@ -90,6 +91,10 @@ export default function Spenden() {
               </span>
             </label>
           </div>
+            {fehler.uebergabeart && (
+            <p className="mt-2 text-sm font-bold text-red-700">
+    {fehler.uebergabeart}</p>
+          )}
         </fieldset>
 
         {uebergabeart === 'abholung' && (
@@ -103,27 +108,27 @@ export default function Spenden() {
 
             <div className="mt-4 flex flex-col gap-4">
               <div className="grid gap-4 sm:grid-cols-2">
-                <Feld id="vorname" label="Vorname" wert={adresse.vorname} onAendern={adresseAendern} />
-                <Feld id="nachname" label="Nachname" wert={adresse.nachname} onAendern={adresseAendern} />
+                <Feld id="vorname" label="Vorname" wert={adresse.vorname} onAendern={adresseAendern} fehler={fehler.vorname} />
+                <Feld id="nachname" label="Nachname" wert={adresse.nachname} onAendern={adresseAendern} fehler={fehler.nachname} />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="sm:col-span-2">
-                  <Feld id="strasse" label="Straße" wert={adresse.strasse} onAendern={adresseAendern} />
+                  <Feld id="strasse" label="Straße" wert={adresse.strasse} onAendern={adresseAendern} fehler={fehler.strasse} />
                 </div>
-                <Feld id="hausnummer" label="Hausnummer" wert={adresse.hausnummer} onAendern={adresseAendern} />
+                <Feld id="hausnummer" label="Hausnummer" wert={adresse.hausnummer} onAendern={adresseAendern}  fehler={fehler.hausnummer} />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-3">
-                <Feld id="plz" label="Postleitzahl" wert={adresse.plz} onAendern={adresseAendern} />
+                <Feld id="plz" label="Postleitzahl" wert={adresse.plz} onAendern={adresseAendern} fehler={fehler.plz} />
                 <div className="sm:col-span-2">
-                  <Feld id="ort" label="Ort" wert={adresse.ort} onAendern={adresseAendern} />
+                  <Feld id="ort" label="Ort" wert={adresse.ort} onAendern={adresseAendern} fehler={fehler.ort} />
                 </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Feld id="telefon" label="Telefon" typ="tel" wert={adresse.telefon} onAendern={adresseAendern} />
-                <Feld id="email" label="E-Mail" typ="email" wert={adresse.email} onAendern={adresseAendern} />
+                <Feld id="telefon" label="Telefon" typ="tel" wert={adresse.telefon} onAendern={adresseAendern} fehler={fehler.telefon} />
+                <Feld id="email" label="E-Mail" typ="email" wert={adresse.email} onAendern={adresseAendern} fehler={fehler.email} />
               </div>
             </div>
           </fieldset>
@@ -148,10 +153,14 @@ export default function Spenden() {
                     />
                     {art.bezeichnung}
                   </label>
-                ))}
+                ))}           
               </div>
             </fieldset>
-          ))}
+            ))}
+          {fehler.kleidungsarten && (
+            <p className="mt-2 text-sm font-bold text-red-700">
+    {fehler.kleidungsarten}</p>
+          )}
         </fieldset>
 
         <fieldset className="mt-8">
@@ -174,6 +183,10 @@ export default function Spenden() {
               </option>
             ))}
           </select>
+            {fehler.krisengebiet && (
+            <p className="mt-2 text-sm font-bold text-red-700">
+    {fehler.krisengebiet}</p>
+            )}
         </fieldset>
         
         <button
