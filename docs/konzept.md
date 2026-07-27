@@ -52,10 +52,10 @@ Der Übergabeort wird beispielsweise aus der gewählten Übergabeart abgeleitet.
 ## Seitenstruktur
 | Seite | Adresse | Zweck |
 |---|---|---|
-| Startseite | `index.html` | Vorstellung des Vereins und Einstieg in die Website |
-| Seite 2 | `seite2.html` | Zweck der Seite |
-| Seite 3 | `seite3.html` | Zweck der Seite |
-| Seite 4 | `seite4.html` | Zweck der Seite |
-| Seite 5 | `seite5.html` | Zweck der Seite |
-| Seite 6 | `seite6.html` | Zweck der Seite |
-| Seite 7 | `seite7.html` | Zweck der Seite |
+| Startseite | `/` | Einstieg, Ablauf in drei Schritten, Verweis auf das Formular |
+| Spende registrieren | `/spenden` | Registrierungsformular, Kern der Anwendung |
+| Bestätigung | `/bestaetigung` | Abschlussseite nach dem Absenden, nicht in der Navigation |
+| Über uns | `/verein` | Verein, Geschäftsstelle, Zielregionen |
+| Impressum | `/impressum` | rechtliche Pflichtangaben, im Footer verlinkt |
+| Datenschutz | `/datenschutz` | Umgang mit den eingegebenen Daten, im Footer verlinkt |
+| Nicht gefunden | alle übrigen | Auffangseite mit Rückwegen |
