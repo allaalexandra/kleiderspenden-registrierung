@@ -110,18 +110,8 @@ die Farbe `#5C7D6C` ergänzt.
 | B5 | Fehlerhafte Felder tragen `aria-invalid` und verweisen per `aria-describedby` auf ihre Meldung | erfüllt |
 | B6 | Klick auf ein Beschriftungsfeld setzt den Cursor ins zugehörige Eingabefeld | erfüllt |
 
-## 6. Schutz gegen Code-Injection
 
-| Eingabe im Feld Straße | Ergebnis |
-|---|---|
-| `<script>alert('Angriff')</script>` | als Text ausgegeben, nicht ausgeführt |
-| `<img src=x onerror="alert(1)">` | als Text ausgegeben, kein Bildelement entsteht |
-
-Im HTML erscheinen die Zeichen kodiert als `&lt;` und `&gt;`. Der Schutz beruht
-auf der automatischen Kodierung durch React bei der Ausgabe. Eine Suche über das
-gesamte Projekt nach `dangerouslySetInnerHTML` ergibt keine Treffer.
-
-## 7. Werkzeuggestützte Prüfungen
+## 6. Werkzeuggestützte Prüfungen
 
 | Befehl | Ergebnis |
 |---|---|
@@ -130,7 +120,7 @@ gesamte Projekt nach `dangerouslySetInnerHTML` ergibt keine Treffer.
 | `npm run build` | erfolgreich, 90 Module |
 | Browserkonsole | keine Fehler, keine Warnungen |
 
-## 8. Nicht durchgeführte Prüfungen
+## 7. Nicht durchgeführte Prüfungen
 
 - **Usability-Tests** mit Testpersonen. Die Bedienbarkeit wurde nur anhand
   anerkannter Regeln beurteilt, nicht beobachtet.
